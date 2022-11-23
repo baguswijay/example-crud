@@ -33,7 +33,7 @@ class UserController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-            )];
+            ]);
 
             return response([
                 "data"      =>$user,
@@ -49,7 +49,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $user = User::where('uuid', $id)->update([
+            $user = User::where('users_id', $id)->update([
                 'name'  => $request->name,
                 'email' => $request->email,
             ]);
@@ -68,7 +68,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         try {
-            $user = User::where('uuid', $id)->delete();
+            $user = User::where('users_id', $id)->delete();
 
             return response([
                 "message"   => 'Data Terhapus'
